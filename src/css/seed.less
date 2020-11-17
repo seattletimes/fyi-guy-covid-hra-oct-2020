@@ -1,0 +1,102 @@
+@import "seattletimes";
+@aspect-ratio: 6.2/10;
+@legend-length: 5; //number of legend items
+body {
+  font-family: @df-sans;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 630px;
+  font-size: 16px;
+  clear: both;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #1D1D1D;
+    color: white;
+  }
+
+
+}
+
+
+
+.aspect-ratio-outer {
+  width: 100%;
+  position: relative;
+  .aspect-ratio-inner {
+    padding-bottom: percentage(@aspect-ratio);
+    position: relative;
+  }
+  leaflet-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    &:not([ready]) {
+      display: none;
+    }
+  }
+}
+.map-container {
+  position: relative;
+}
+.bigheader {
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin: 12px 0 0;
+  @media @tablet {
+    font-size: 14px;
+  }
+}
+
+
+
+
+@import "leaflet-tweaks";
+@import "legend";
+@import "popup";
+
+.graphic-hed {
+  @media (prefers-color-scheme: dark) {
+    color: white;
+  }
+}
+.graphic-chatter {
+  @media (prefers-color-scheme: dark) {
+    color: white;
+  }
+}
+
+
+
+#legendCon {
+  margin-bottom: 1em;
+  margin-top: 1.5em;
+  text-align: center;
+
+  .label { font-weight: bold; margin-bottom: 0.2em; }
+
+  .legend {
+    display: inline-block;
+    margin-right: 10px;
+
+    .color {
+      width: 20px;
+      height: 10px;
+      display: inline-block;
+    }
+
+    .number {
+      display: inline-block;
+
+      span {
+
+        &.hide { display: none; }
+      }
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    color: white;
+  }
+}
